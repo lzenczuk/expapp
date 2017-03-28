@@ -1,0 +1,19 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources" : {
+    "makeTransactionLambda" : {
+      "Type" : "AWS::Lambda::Function",
+      "Properties" : {
+        "Code" : {
+          "S3Bucket" : "expapp-lambda-bucket",
+          "S3Key" : "expapp-1.0-SNAPSHOT.zip"
+        },
+        "Description" : "Experimental lambda 'creating' transaction",
+        "FunctionName" : "makeTransactionCF",
+        "Handler" : "com.github.lzenczuk.aws.lambda.expapp.handler.GreetingHandler::makeTransaction",
+        "Role" : "arn:aws:iam::039898779445:role/lambda_basic_execution",
+        "Runtime" : "java8"
+      }
+    }
+  }
+}
