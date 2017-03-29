@@ -2,6 +2,7 @@ package com.github.lzenczuk.aws.lambda.expapp.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.databind.node.DoubleNode;
+import com.github.lzenczuk.aws.lambda.annotation.Lambda;
 import com.github.lzenczuk.aws.lambda.expapp.handler.model.CreateTransactionRequest;
 import com.github.lzenczuk.aws.lambda.expapp.handler.model.CreateTransactionResponse;
 import com.github.lzenczuk.aws.lambda.expapp.handler.model.TransactionStatus;
@@ -16,6 +17,7 @@ public class GreetingHandler {
 
     private static final Logger log = Logger.getLogger(GreetingHandler.class);
 
+    @Lambda
     public String hello(String name, Context context){
         log.info("Handling hello request. Name: "+name);
 
@@ -26,6 +28,7 @@ public class GreetingHandler {
         return "Hello "+name+"!";
     }
 
+    @Lambda
     public CreateTransactionResponse makeTransaction(CreateTransactionRequest request, Context context){
         log.info("Handling create transaction request: "+request);
 

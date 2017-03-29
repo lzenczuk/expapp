@@ -1,0 +1,17 @@
+group 'com.github.lzenczuk.aws.lambda'
+version '1.0-SNAPSHOT'
+
+dependencies{
+    compile project(':anprocessor')
+}
+
+task buildAwsLambdaZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildAwsLambdaZip
+
